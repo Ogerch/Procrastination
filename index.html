@@ -1,12 +1,111 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Procrastination</title>
+    <link rel="stylesheet" href="Css/styles.css">
+    <script src="script.js" defer></script>
+    <title>Procrastination - Accueil</title>
 </head>
-<body>
-    <H1>Juste 5 minutes deviennent des heures</H1>
+
+<!-- Header -->
+<body id="Accueil">
+    <header class="entete">
+        <a class="logo" href="index.html">Juste 5 minutes devinennent des heures</a>
+
+        <!-- Menu Burger -->
+        <input id="nav-toggle" class="nav-toggle" type="checkbox">
+        <label for="nav-toggle" class="burger material-icons" aria-label="Afficher la navigation">menu</label>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+
+        <!-- Navigation principale -->
+        <nav class="nav-principale" aria-label="Navigation-principale">
+            <a href="#Bienvenue">Accueil</a>
+            <a href="#Àpropos">À propos</a>
+            <a href="#TypeDeProcrastinateur">Types de procrastinateurs</a>
+            <a href="#Conseils">Conseils</a>
+            <a href="#Créateurs">Créateurs</a>
+            <a href="#contacts">Contacts</a>
+        </nav>
+    </header>
+
     
+    <!-- Contenu principal -->
+    <main id="contenu-principale">
+
+        <!-- Section de bienvenue -->
+        <section class="carte" id="Bienvenue">
+            <h1>Bienvenue</h1>
+            <p>Nous sommes ravis de vous accueillir sur notre site de procrastination !</p>
+        </section>
+
+        <!-- Section À propos -->
+        <section class="carte" id="Àpropos">
+            <h1>À propos du site</h1>
+            <p>Le site de procrastination est une ressource pour ceux qui souhaitent améliorer leur productivité et gérer leur temps de manière plus efficace.</p>
+        </section>
+
+        <!-- Section sur les types de procrastinateurs -->
+        <section class="carte" id="TypeDeProcrastinateur">
+            <h1>Types de procrastinateurs</h1>
+            <p>Découvrez les différents types de procrastinateurs et apprenez à les reconnaître.</p>
+            <ul><li>
+                <h2>Le perfectionniste</h2>
+                <p>Le perfectionniste a du mal à commencer une tâche de peur de ne pas la faire parfaitement. Il peut passer beaucoup de temps à planifier et à réviser sans jamais se lancer.</p>
+                </li>
+                <li>
+                    <h2>Le paresseux</h2>
+                    <p>Le paresseux évite les tâches qu'il juge ennuyeuses ou difficiles. Il préfère s'adonner à des activités plus agréables, même si cela signifie reporter ses responsabilités.</p>
+                </li>
+                <li>
+                    <h2>l'évitateur</h2>
+                    <p>l'évitateur tend à éviter les tâches qui lui semblent stressantes ou intimidantes. Il peut procrastiner en se disant qu'il y reviendra plus tard, mais cela ne se produit jamais.</p>
+                </li>
+                <li>
+                    <h2>le démotivé</h2>
+                    <p>le démotivé a perdu le moral et se sent impuissant face aux tâches à accomplir. Il peut procrastiner en se sentant désemparé ou en doutant de ses capacités.</p>
+                </li>
+            </ul>
+        </section>
+
+        <!-- Section sur les conseils -->
+        <section class="carte" id="Conseils">
+            <h1>Conseils pour surmonter la procrastination</h1>
+            <p>Voici quelques conseils pour vous aider à surmonter la procrastination :</p>
+            <ul>
+                <li>Fixez des objectifs clairs et réalisables.</li>
+                <li>Divisez les tâches en étapes plus petites.</li>
+                <li>Utilisez des techniques de gestion du temps, comme la méthode Pomodoro.</li>
+                <li>Éliminez les distractions de votre environnement de travail.</li>
+                <li>Récompensez-vous après avoir accompli une tâche.</li>
+            </ul>
+        </section>
+
+        <!-- Section sur les créateurs -->
+        <section class="carte" id="Créateurs">
+            <h1>Les créateurs du site</h1>
+            <div class="carrousel-conteneur">
+                <div class="carrousel-adaptative">
+                    <div class="carte-adaptative"><figure><img src="img/Créateurs/Nicolas.jpg" alt="Nicolas, créateur du site"><figcaption></figcaption></figure></div>
+                    <div class="carte-adaptative"><figure><img src="img/Créateurs/Adriano.jpg" alt="Adriano, créateur du site"><figcaption></figcaption></figure></div>
+                </div>   
+            </div>
+            <h2>Nicolas et Adriano</h2>
+            <h3>Designers graphiques et développeurs</h3>
+            <h4>« Tout est possible à qui rêve, ose, travaille et n'abandonne jamais. » — Xavier Dola</h4>
+            
+        </section>
+    </main>
+
+    <!-- Section des contacts -->
+    <footer id="contacts">
+        <h1>Contacts</h1>
+        <p>&copy; 2026 Site de procrastination. Tous droits réservés.</p>
+    </footer>
 </body>
 </html>

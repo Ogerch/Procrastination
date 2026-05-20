@@ -1,7 +1,245 @@
-h1 h2{
-    color: white;
+/* Style jeu vidéo pour le site */
+/* Ésthétique visée: Chillwave */
+
+/* ================ Paramètres défaut =============================*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-body{
-    background-color: black;
+html{
+    scroll-behavior: smooth;
+
+}
+
+
+
+/* ================= Couleurs principales =======================*/
+:root {
+    --couleur-principale: #ff6b6b;
+    --couleur-secondaire: #4ecdc4;
+    --couleur-tertiaire: #1a1a2e;
+    --couleur-fond: #f0f0f0;
+}
+
+/* ==================== Header ================================ */
+.entete {
+    position: sticky;
+    top: 0;
+    z-index: 30;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    padding: clamp(0.75rem, 3vw, 1.25rem);
+    background-color: var(--couleur-fond);
+    border-bottom: 4px solid var(--couleur-tertiaire);
+}
+
+.entete h1 {
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+    color: var(--couleur-principale);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.logo{
+    color: var(--couleur-secondaire);
+    text-decoration: none;
+    font-size: 1rem;
+    letter-spacing: 0.2rem;
+}
+
+/* =================== Navigation ================================*/
+.nav-toggle{
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.burger{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    color: var(--couleur-principale);
+    background-color: var(--couleur-fond);
+    border: 3px solid var(--couleur-secondaire);
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.burger:hover{
+    color: var(--couleur-secondaire);
+    background-color: var(--couleur-principale);
+}
+
+.nav-principale {
+   position: fixed;
+   inset: 4.5rem 0 0 auto;
+   width: min(100vw - 2rem, 20rem);
+   background-color: var(--couleur-fond);
+   border: 3px solid var(--couleur-secondaire);
+   flex-direction: column;
+   gap: 0.5rem;
+   padding: 1rem;
+   transform: translateX(100%);
+   opacity: 0;
+   pointer-events: none;
+   transition: transform 280ms ease, opacity 220ms ease;
+   z-index: 25;
+}
+
+.nav-principale a {
+    color: var(--couleur-tertiaire);
+    text-decoration: none;
+    font-size: 1.25rem;
+    padding: 0.5rem;
+    background-color: transparent;
+    border: 3px solid transparent;
+    border-radius: 0.5rem;
+    transition: background 200ms ease, color 200ms ease;
+}
+
+.nav-principale a:hover, 
+.nav-principale a:focus-visible {
+    background-color: var(--couleur-secondaire);
+    color: var(--couleur-fond);
+}
+
+.nav-principale a:active{
+    transform: scale(0.95);
+    background-color: var(--couleur-principale);
+    color: var(--couleur-fond);
+}
+
+.nav-toggle:checked ~ .nav-principale {
+    transform: translateX(0);
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* ==================== Contenu principal ================================ */
+#contenu-principale {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 2rem;
+}
+
+.carte {
+    background-color: var(--couleur-fond);
+    border: 3px solid var(--couleur-secondaire);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.carte h1 {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    color: var(--couleur-principale);
+    margin-bottom: 1rem;
+}
+
+.carte p {
+    font-size: 1rem;
+    color: var(--couleur-tertiaire);
+    line-height: 1.5;
+}
+
+#Créateurs img {
+  width: min(14rem, 100%);
+  max-width: 12rem;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid rgba(255,255,255,.18);
+  box-shadow: 0 0 0 2px rgba(99,255,0,.12);
+}
+
+
+/* ==================== Footer ================================ */
+#contacts {
+    background-color: var(--couleur-tertiaire);
+    color: var(--couleur-fond);
+    text-align: center;
+    padding: 1rem;
+}
+
+/* ==================== Adaptative ================================ */
+
+/* Mobile */
+@media (max-width: 767px){
+  .entete {
+    justify-content: flex-start;
+  }
+
+  .nav-principale {
+    top: auto;
+    bottom: 0;
+    inset: auto 0 0 0;
+    width: 100%;
+    max-width: 100%;
+    border-radius: 0 0 0.5rem 0.5rem;
+  }
+
+  .nav-principale a {
+    padding: 0.75rem 0.9rem;
+  }
+
+  .carte ul {
+    gap: 0.75rem;
+  }
+
+  .carte ul li {
+    flex: 1 1 45%;
+    min-width: 6rem;
+  }
+}
+
+/* Tablet */
+@media (min-width: 768px) {
+    .nav-principale{
+        position: static;
+        width: auto;
+        flex-direction: row;
+        transform: none;
+        opacity: 1;
+        pointer-events: auto;
+        background: transparent;
+        border: none;
+        padding: 0;
+    }
+
+    .burger{
+        display: none;
+    }
+
+    .nav-principale a{
+        background-color: rgba(255, 107, 107, 0.1);
+    }
+
+    .carte img{
+        width: auto;
+        margin: 0 auto;
+    }
+}
+
+/* Desktop */
+@media (min-width: 1440px){
+    main{
+        padding: clamp(1.25rem, 2vw, 2rem);
+    }
+
+    .carte {
+        padding: 1.75rem;
+    }
+}
+
+@media (min-width: 1920px){
+    body{
+        font-size: 1.03rem;
+    }
 }
