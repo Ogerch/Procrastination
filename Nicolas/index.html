@@ -130,11 +130,56 @@
       pointer-events: none;
     }
 
-    .hero-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1.4fr) minmax(280px, 380px);
-      gap: 42px;
-      align-items: start;
+   .hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 320px;
+  gap: 42px;
+  align-items: end;
+  
+}
+
+    .hero-image-frame {
+  width: 100%;
+  max-width: 320px;
+  aspect-ratio: 1 / 1;
+
+  border: 4px solid #00e5ff;
+  background: #101022;
+
+  box-shadow:
+    0 0 0 4px #000,
+    10px 10px 0 #000,
+    0 0 18px rgba(0,229,255,0.25);
+
+  overflow: hidden;
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  align-self: end;
+  justify-self: end;
+
+  margin-top: auto;
+}
+
+    .hero-image-frame::before {
+      content: "IMAGE";
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      font-size: 0.55rem;
+      color: #00e5ff;
+      opacity: 0.7;
+      z-index: 2;
+    }
+
+    .hero-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      image-rendering: pixelated;
     }
 
     h1 {
@@ -332,7 +377,7 @@
 
     .card h3 {
       margin: 0 0 10px;
-      font-size: 1rem;
+      font-size: 0.8rem;
       line-height: 1.5;
     }
 
@@ -385,6 +430,108 @@
       color: #fff;
       font-size: 0.65rem;
       border: 3px solid rgba(124, 92, 255, 0.6);
+    }
+
+    .dice-game {
+      margin-top: 28px;
+    }
+
+    .dice-panel {
+      background: #101022;
+      border: 4px solid #00e5ff;
+      box-shadow: var(--shadow);
+      padding: 24px;
+      display: grid;
+      gap: 24px;
+    }
+
+    .dice-header h3 {
+      margin: 0 0 14px;
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+
+    .dice-header p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.68rem;
+      line-height: 1.9;
+    }
+
+    .dice-display {
+      width: 120px;
+      height: 120px;
+      margin: 0 auto;
+      background: #1a1a2e;
+      border: 4px solid #fff;
+      box-shadow:
+        0 0 0 4px #000,
+        10px 10px 0 #000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.5rem;
+      color: #ffd166;
+      text-shadow:
+        3px 3px 0 #000,
+        0 0 10px rgba(255,209,102,0.4);
+    }
+
+    .roll-button {
+      justify-self: center;
+      background: #ff4fd8;
+      color: white;
+      border: 4px solid #fff;
+      padding: 16px 22px;
+      font-family: inherit;
+      font-size: 0.65rem;
+      cursor: pointer;
+      box-shadow:
+        0 0 0 4px #000,
+        8px 8px 0 #000;
+      transition: transform 120ms steps(2);
+    }
+
+    .roll-button:hover {
+      transform: translate(-3px, -3px);
+    }
+
+    .dice-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .dice-slot {
+      background: #1a1a2e;
+      border: 4px solid #ff4fd8;
+      padding: 16px;
+      display: grid;
+      gap: 12px;
+    }
+
+    .dice-slot.crossed {
+      border-color: #67f5a6;
+      background: rgba(103,245,166,0.12);
+    }
+
+    .dice-number {
+      font-size: 1rem;
+      color: #ffd166;
+    }
+
+    .dice-slot input {
+      width: 100%;
+      background: #0c0c18;
+      border: 3px solid #00e5ff;
+      color: white;
+      padding: 10px;
+      font-family: inherit;
+      font-size: 0.55rem;
+    }
+
+    .dice-slot input::placeholder {
+      color: rgba(255,255,255,0.45);
     }
 
     .footer-panel {
@@ -504,6 +651,75 @@
       .value {
         font-size: 0.85rem;
       }
+
+      .hero-image-frame {
+        max-width: 260px;
+        margin: 0 auto;
+      }
+
+      .hero-copy {
+        font-size: 0.62rem;
+      }
+
+      .badge {
+        padding: 14px;
+        font-size: 0.58rem;
+        gap: 8px;
+      }
+
+      .badge strong {
+        font-size: 0.8rem;
+      }
+
+      .progress-wrap {
+        height: 18px;
+        margin-top: 14px;
+      }
+
+      .card h3 {
+        font-size: 0.7rem;
+      }
+
+      .card p {
+        font-size: 0.6rem;
+        line-height: 1.7;
+      }
+
+      .task-list li {
+        font-size: 0.55rem;
+        line-height: 1.5;
+        padding: 8px;
+      }
+
+      .tag {
+        font-size: 0.55rem;
+      }
+
+      .footer-panel {
+        padding: 16px;
+        font-size: 0.6rem;
+      }
+
+      .toast {
+        width: calc(100% - 32px);
+        text-align: center;
+        font-size: 0.58rem;
+      }
+
+      .dice-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .dice-display {
+        width: 90px;
+        height: 90px;
+        font-size: 2rem;
+      }
+
+      .roll-button {
+        width: 100%;
+        text-align: center;
+      }
     }
   </style>
 </head>
@@ -515,7 +731,7 @@
       <div class="hero-grid">
         <div>
           <h1>
-            <span class="typewriter">Juste 5 minutes...</span><br />
+            <span class="typewriter">Juste 5 minutes.</span><br />
             Puis tu gagnes la partie.
           </h1>
 
@@ -535,13 +751,20 @@
           </div>
         </div>
 
+        <div class="hero-image-frame">
+          <img
+            src="https://placehold.co/600x600/png"
+            alt="Illustration rétro"
+            class="hero-image"
+          />
+        </div>
       </div>
     </header>
 
     <h2 class="section-title">Cartes de mission</h2>
     <section class="grid" id="cards">
       <article class="card" data-xp="25" data-name="Lire 5 minutes">
-        <h3>📚 Lire 5 minutes</h3>
+        <h3>Lire 5 minutes</h3>
         <p>Ouvre un livre, un article ou tes notes. Le but est juste de commencer.</p>
         <ul class="task-list">
           <li class="done">Ouvrir la page</li>
@@ -552,7 +775,7 @@
       </article>
 
       <article class="card" data-xp="40" data-name="Ranger ton espace">
-        <h3>🧹 Ranger ton espace</h3>
+        <h3>Ranger ton espace</h3>
         <p>Déplace 5 objets, jette 3 déchets, puis garde seulement ce qui sert.</p>
         <ul class="task-list">
           <li class="done">Ramasser 5 objets</li>
@@ -563,7 +786,7 @@
       </article>
 
       <article class="card" data-xp="30" data-name="Faire 1 mini-tâche">
-        <h3>⚡ 1 mini-tâche</h3>
+        <h3>1 mini-tâche</h3>
         <p>Choisis une action si petite qu’elle paraît ridicule. C’est exactement le but.</p>
         <ul class="task-list">
           <li class="done">Répondre à 1 message</li>
@@ -574,7 +797,7 @@
       </article>
 
       <article class="card" data-xp="35" data-name="Préparer demain">
-        <h3>🗓️ Préparer demain</h3>
+        <h3>Préparer demain</h3>
         <p>Note 3 choses à faire demain. Pas plus. La clarté fait gagner du temps.</p>
         <ul class="task-list">
           <li class="done">Choisir 3 priorités</li>
@@ -585,7 +808,7 @@
       </article>
 
       <article class="card" data-xp="50" data-name="Session focus">
-        <h3>🎮 Session focus</h3>
+        <h3>Session focus</h3>
         <p>Lance un chrono de 10 à 25 minutes et travaille comme dans une zone bonus.</p>
         <ul class="task-list">
           <li class="done">Mettre un chrono</li>
@@ -596,7 +819,7 @@
       </article>
 
       <article class="card" data-xp="60" data-name="Grande victoire">
-        <h3>🏆 Grande victoire</h3>
+        <h3>Grande victoire</h3>
         <p>Termine une tâche importante. C’est la carte rare. Clique quand tu l’as fait.</p>
         <ul class="task-list">
           <li class="done">Commencer sans attendre</li>
@@ -607,6 +830,57 @@
       </article>
     </section>
 
+    <h2 class="section-title">Procrastination Dice Game</h2>
+    <section class="dice-game">
+      <div class="dice-panel">
+        <div class="dice-header">
+          <h3>Le Dé du Destin</h3>
+          <p>
+            Lance un dé. Écris une tâche sur le numéro obtenu.
+            Si tu relances ce même chiffre plus tard, tu dois accomplir la tâche.
+          </p>
+        </div>
+
+        <div class="dice-display" id="diceDisplay">?</div>
+
+        <button class="roll-button" id="rollButton" type="button">
+          LANCER LE DÉ
+        </button>
+
+        <div class="dice-grid" id="diceGrid">
+          <div class="dice-slot" data-number="1">
+            <span class="dice-number">1</span>
+            <input type="text" placeholder="Écris une tâche..." />
+          </div>
+
+          <div class="dice-slot" data-number="2">
+            <span class="dice-number">2</span>
+            <input type="text" placeholder="Écris une tâche..." />
+          </div>
+
+          <div class="dice-slot" data-number="3">
+            <span class="dice-number">3</span>
+            <input type="text" placeholder="Écris une tâche..." />
+          </div>
+
+          <div class="dice-slot" data-number="4">
+            <span class="dice-number">4</span>
+            <input type="text" placeholder="Écris une tâche..." />
+          </div>
+
+          <div class="dice-slot" data-number="5">
+            <span class="dice-number">5</span>
+            <input type="text" placeholder="Écris une tâche..." />
+          </div>
+
+          <div class="dice-slot" data-number="6">
+            <span class="dice-number">6</span>
+            <input type="text" placeholder="Écris une tâche..." />
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section class="footer-panel">
       <strong>Règle du jeu :</strong>
       <div>Plus la tâche est petite, plus elle est facile à gagner. Une action gagnée vaut mieux qu’un plan parfait.</div>
@@ -615,109 +889,145 @@
 
   <div class="toast" id="toast">+0 XP</div>
 
- <script>
-  const cards = document.querySelectorAll('.card');
-  const xpText = document.getElementById('xpText');
-  const xpNextText = document.getElementById('xpNextText');
-  const levelText = document.getElementById('levelText');
-  const progressBar = document.getElementById('progressBar');
-  const toast = document.getElementById('toast');
+  <script>
+    const cards = document.querySelectorAll('.card');
+    const xpText = document.getElementById('xpText');
+    const xpNextText = document.getElementById('xpNextText');
+    const levelText = document.getElementById('levelText');
+    const progressBar = document.getElementById('progressBar');
+    const toast = document.getElementById('toast');
 
-  let xp = 0;
-  let level = 1;
-  const xpPerLevel = 100;
-  const completed = new Set();
+    const rollButton = document.getElementById('rollButton');
+    const diceDisplay = document.getElementById('diceDisplay');
+    const diceSlots = Array.from(document.querySelectorAll('.dice-slot'));
 
-  function updateUI() {
-    const xpIntoLevel = xp % xpPerLevel;
-    const progress = (xpIntoLevel / xpPerLevel) * 100;
+    let xp = 0;
+    let level = 1;
+    const xpPerLevel = 100;
+    const completed = new Set();
+    const crossedNumbers = new Set();
 
-    xpText.textContent = xpIntoLevel;
-    xpNextText.textContent = xpPerLevel;
-    levelText.textContent = level;
-    progressBar.style.width = `${progress}%`;
-  }
+    function updateUI() {
+      const xpIntoLevel = xp % xpPerLevel;
+      const progress = (xpIntoLevel / xpPerLevel) * 100;
 
-  function showToast(message) {
-    toast.textContent = message;
-    toast.classList.add('show');
-    clearTimeout(window.toastTimer);
-    window.toastTimer = setTimeout(() => {
-      toast.classList.remove('show');
-    }, 1400);
-  }
-
-  function burst(card, amount) {
-    const rect = card.getBoundingClientRect();
-
-    const burstEl = document.createElement('div');
-    burstEl.className = 'xp-burst';
-    burstEl.textContent = `+${amount} XP`;
-    burstEl.style.left = `${rect.width * 0.5 + Math.random() * 20 - 10}px`;
-    burstEl.style.top = `${rect.height * 0.5}px`;
-    card.appendChild(burstEl);
-    setTimeout(() => burstEl.remove(), 900);
-
-    for (let i = 0; i < 5; i++) {
-      const sparkle = document.createElement('div');
-      sparkle.className = 'sparkle';
-      sparkle.style.left = `${rect.width * 0.5 + (Math.random() * 120 - 60)}px`;
-      sparkle.style.top = `${rect.height * 0.45 + (Math.random() * 30 - 15)}px`;
-      card.appendChild(sparkle);
-      setTimeout(() => sparkle.remove(), 720);
+      xpText.textContent = xpIntoLevel;
+      xpNextText.textContent = xpPerLevel;
+      levelText.textContent = level;
+      progressBar.style.width = `${progress}%`;
     }
-  }
 
-  function unlockLevelUp(newLevel) {
-    showToast(`Niveau ${newLevel} débloqué !`);
-    document.body.animate(
-      [
-        { transform: 'scale(1)' },
-        { transform: 'scale(1.006)' },
-        { transform: 'scale(1)' }
-      ],
-      { duration: 420, easing: 'ease-out' }
-    );
-  }
+    function showToast(message) {
+      toast.textContent = message;
+      toast.classList.add('show');
+      clearTimeout(window.toastTimer);
+      window.toastTimer = setTimeout(() => {
+        toast.classList.remove('show');
+      }, 1400);
+    }
 
-  cards.forEach(card => {
-    card.addEventListener('click', () => {
-      const amount = Number(card.dataset.xp);
-      const quest = card.dataset.name;
+    function burst(card, amount) {
+      const rect = card.getBoundingClientRect();
 
-      if (completed.has(quest)) {
-        showToast('Cette carte est déjà complétée.');
-        return;
+      const burstEl = document.createElement('div');
+      burstEl.className = 'xp-burst';
+      burstEl.textContent = `+${amount} XP`;
+      burstEl.style.left = `${rect.width * 0.5 + Math.random() * 20 - 10}px`;
+      burstEl.style.top = `${rect.height * 0.5}px`;
+      card.appendChild(burstEl);
+      setTimeout(() => burstEl.remove(), 900);
+
+      for (let i = 0; i < 5; i++) {
+        const sparkle = document.createElement('div');
+        sparkle.className = 'sparkle';
+        sparkle.style.left = `${rect.width * 0.5 + (Math.random() * 120 - 60)}px`;
+        sparkle.style.top = `${rect.height * 0.45 + (Math.random() * 30 - 15)}px`;
+        card.appendChild(sparkle);
+        setTimeout(() => sparkle.remove(), 720);
       }
+    }
 
-      completed.add(quest);
-      xp += amount;
-      card.classList.add('completed');
-      burst(card, amount);
-      showToast(`Mission réussie : ${quest}`);
+    function unlockLevelUp(newLevel) {
+      showToast(`Niveau ${newLevel} débloqué !`);
+      document.body.animate(
+        [
+          { transform: 'scale(1)' },
+          { transform: 'scale(1.006)' },
+          { transform: 'scale(1)' }
+        ],
+        { duration: 420, easing: 'ease-out' }
+      );
+    }
 
-      const previousLevel = level;
-      level = Math.floor(xp / xpPerLevel) + 1;
-      if (level > previousLevel) {
-        unlockLevelUp(level);
-      }
+    cards.forEach(card => {
+      card.addEventListener('click', () => {
+        const amount = Number(card.dataset.xp);
+        const quest = card.dataset.name;
 
-      updateUI();
+        if (completed.has(quest)) {
+          showToast('Cette carte est déjà complétée.');
+          return;
+        }
+
+        completed.add(quest);
+        xp += amount;
+        card.classList.add('completed');
+        burst(card, amount);
+        showToast(`Mission réussie : ${quest}`);
+
+        const previousLevel = level;
+        level = Math.floor(xp / xpPerLevel) + 1;
+        if (level > previousLevel) {
+          unlockLevelUp(level);
+        }
+
+        updateUI();
+      });
     });
-  });
 
-  document.addEventListener('keydown', (e) => {
-    if (e.key.toLowerCase() === 'r') {
-      xp = 0;
-      level = 1;
-      completed.clear();
-      cards.forEach(card => card.classList.remove('completed'));
-      showToast('Progression réinitialisée.');
-      updateUI();
-    }
-  });
+    document.addEventListener('keydown', (e) => {
+      if (e.key.toLowerCase() === 'r') {
+        xp = 0;
+        level = 1;
+        completed.clear();
+        cards.forEach(card => card.classList.remove('completed'));
+        showToast('Progression réinitialisée.');
+        updateUI();
+      }
+    });
 
-  updateUI();
-</script>
+    rollButton.addEventListener('click', () => {
+      const result = Math.floor(Math.random() * 6) + 1;
+      const slot = diceSlots[result - 1];
+      const input = slot.querySelector('input');
+      const task = input.value.trim();
+
+      diceDisplay.textContent = result;
+
+      if (crossedNumbers.has(result)) {
+        slot.animate(
+          [
+            { transform: 'translateX(0px)' },
+            { transform: 'translateX(-8px)' },
+            { transform: 'translateX(8px)' },
+            { transform: 'translateX(0px)' }
+          ],
+          { duration: 300 }
+        );
+
+        if (task) {
+          showToast(`Tu dois faire : ${task}`);
+        } else {
+          showToast(`Le ${result} est tombé encore, mais la tâche est vide.`);
+        }
+      } else {
+        crossedNumbers.add(result);
+        slot.classList.add('crossed');
+        showToast(`Le numéro ${result} est maintenant marqué.`);
+      }
+    });
+
+    updateUI();
+  </script>
 </body>
 </html>
