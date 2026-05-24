@@ -3,63 +3,85 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
   <title>Procrastination Quest</title>
   <style>
-
-    /* Hello World */
     :root {
-      --bg: #ff0088;
-      --panel: rgba(18, 24, 48, 0.88);
-      --panel-2: rgba(30, 40, 78, 0.92);
+      --bg: #120458;
+      --panel: #1a1a2e;
+      --panel-2: #101022;
       --text: #ffffff;
-      --muted: #aab3d6;
-      --neon: #7c5cff;
+      --muted: #d0d0d0;
+      --neon: #ff4fd8;
       --neon-2: #00e5ff;
-      --accent: #ff4fd8;
+      --accent: #ffd166;
       --good: #67f5a6;
       --warn: #ffd166;
-      --shadow: 0 0 0 1px rgba(255, 0, 200, 0.25), 0 16px 40px rgba(0, 0, 0, 0.45);
+      --shadow: 0 0 0 4px #000, 8px 8px 0 #000;
     }
 
     * { box-sizing: border-box; }
 
     html {
       scroll-behavior: smooth;
+      image-rendering: pixelated;
     }
 
     body {
       margin: 0;
       min-height: 100vh;
-      font-family: "Trebuchet MS", Arial, sans-serif;
+      font-family: 'Press Start 2P', cursive;
       color: var(--text);
       background:
-        radial-gradient(circle at top, rgba(150, 23, 97, 0.22), transparent 28%),
-        radial-gradient(circle at 80% 20%, rgba(0,229,255,0.13), transparent 18%),
-        linear-gradient(180deg, #ff0177 0%, #e73f47 50%, #f3597f 100%);
+        linear-gradient(180deg, #120458 0%, #3a0ca3 45%, #ff0088 100%);
       overflow-x: hidden;
+      letter-spacing: 1px;
     }
 
-    /* body::before {
+    body::before {
       content: "";
       position: fixed;
       inset: 0;
       pointer-events: none;
       background:
-        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
-      background-size: 100% 4px, 4px 100%;
-      opacity: 0.18;
-      mix-blend-mode: screen;
-    } */
+        repeating-linear-gradient(
+          to bottom,
+          rgba(255,255,255,0.04),
+          rgba(255,255,255,0.04) 2px,
+          transparent 2px,
+          transparent 4px
+        );
+      opacity: 0.35;
+      mix-blend-mode: overlay;
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 38%;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.08) 1px, transparent 1px);
+      background-size: 40px 40px;
+      transform: perspective(300px) rotateX(70deg);
+      transform-origin: bottom;
+      opacity: 0.28;
+    }
 
     .scanline {
       position: fixed;
       inset: 0;
       pointer-events: none;
-      background: linear-gradient(to bottom, transparent 0%, rgba(255,255,255,0.04) 50%, transparent 100%);
+      background: linear-gradient(to bottom, transparent 0%, rgba(255,255,255,0.05) 50%, transparent 100%);
       background-size: 100% 8px;
       animation: scan 8s linear infinite;
-      opacity: 0.35;
+      opacity: 0.3;
     }
 
     @keyframes scan {
@@ -69,17 +91,12 @@
 
     @keyframes float {
       0%, 100% { transform: translateY(0px); }
-      50% { transform: translateY(-8px); }
-    }
-
-    @keyframes pop {
-      0% { transform: scale(0.9); opacity: 0; }
-      100% { transform: scale(1); opacity: 1; }
+      50% { transform: translateY(-6px); }
     }
 
     @keyframes glowPulse {
-      0%, 100% { box-shadow: 0 0 12px rgba(124,92,255,0.35), 0 0 30px rgba(0,229,255,0.15); }
-      50% { box-shadow: 0 0 18px rgba(255,79,216,0.45), 0 0 38px rgba(0,229,255,0.24); }
+      0%, 100% { box-shadow: 0 0 0 4px #000, 0 0 18px rgba(255,79,216,0.25); }
+      50% { box-shadow: 0 0 0 4px #000, 0 0 26px rgba(0,229,255,0.28); }
     }
 
     .container {
@@ -93,10 +110,10 @@
     .hero {
       position: relative;
       overflow: hidden;
-      border-radius: 28px;
+      border-radius: 0;
       padding: 34px;
-      background: linear-gradient(135deg, rgba(22, 28, 58, 0.94), rgba(11, 16, 32, 0.94));
-      border: 1px solid rgba(124, 92, 255, 0.25);
+      background: #1a1a2e;
+      border: 4px solid #fff;
       box-shadow: var(--shadow);
       animation: glowPulse 4s ease-in-out infinite;
     }
@@ -107,55 +124,34 @@
       inset: -40% -10% auto auto;
       width: 320px;
       height: 320px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(0,229,255,0.18), transparent 65%);
-      filter: blur(10px);
+      border-radius: 0;
+      background: radial-gradient(circle, rgba(0,229,255,0.16), transparent 65%);
+      filter: blur(6px);
       pointer-events: none;
     }
 
-    .topbar {
-      display: flex;
-      justify-content: space-between;
-      gap: 16px;
-      align-items: center;
-      flex-wrap: wrap;
-      margin-bottom: 26px;
-    }
-
-    .badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      padding: 10px 14px;
-      border-radius: 999px;
-      background: rgba(124, 92, 255, 0.16);
-      border: 1px solid rgba(124, 92, 255, 0.35);
-      color: var(--muted);
-      font-size: 0.92rem;
-      letter-spacing: 0.03em;
-    }
-
-    .badge span {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: var(--good);
-      box-shadow: 0 0 14px var(--good);
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(280px, 380px);
+      gap: 42px;
+      align-items: start;
     }
 
     h1 {
       margin: 0;
-      font-size: clamp(2.5rem, 6vw, 5rem);
-      line-height: 0.95;
-      letter-spacing: -0.05em;
+      font-size: clamp(2rem, 5vw, 4rem);
+      line-height: 1.4;
       text-transform: uppercase;
-      text-shadow: 0 0 16px rgba(124, 92, 255, 0.3);
+      color: #fff;
+      text-shadow:
+        4px 4px 0 #ff0088,
+        8px 8px 0 #000;
       max-width: 12ch;
     }
 
     .typewriter {
       display: inline-block;
-      border-right: 3px solid var(--neon-2);
+      border-right: 4px solid var(--neon-2);
       white-space: nowrap;
       overflow: hidden;
       animation: typing 4s steps(26, end), blink 0.75s step-end infinite;
@@ -170,19 +166,59 @@
       50% { border-color: transparent; }
     }
 
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.5fr 1fr;
-      gap: 24px;
-      align-items: end;
-    }
-
     .hero-copy {
       color: var(--muted);
-      font-size: 1.05rem;
+      font-size: 0.82rem;
       max-width: 62ch;
       margin-top: 18px;
-      line-height: 1.65;
+      line-height: 1.8;
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: flex-start;
+      margin-top: 26px;
+      margin-bottom: 26px;
+    }
+
+    .badge {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      width: 100%;
+      max-width: 520px;
+      padding: 22px 30px;
+      background: linear-gradient(180deg, #1f1147 0%, #120458 100%);
+      border: 4px solid #00e5ff;
+      box-shadow:
+        0 0 0 4px #000,
+        10px 10px 0 #000,
+        0 0 18px rgba(0,229,255,0.35);
+      color: #ffffff;
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      position: relative;
+      overflow: hidden;
+      line-height: 1.6;
+      flex-wrap: wrap;
+    }
+
+    .badge strong {
+      color: #ffd166;
+      font-size: 1.3rem;
+      text-shadow:
+        2px 2px 0 #000,
+        0 0 10px rgba(255,209,102,0.5);
+    }
+
+    .badge span {
+      width: 10px;
+      height: 10px;
+      border-radius: 0;
+      background: var(--good);
+      box-shadow: 0 0 10px var(--good);
     }
 
     .stats {
@@ -191,46 +227,52 @@
     }
 
     .stat {
-      background: linear-gradient(180deg, rgba(30, 40, 78, 0.94), rgba(18, 24, 48, 0.92));
-      border: 1px solid rgba(0,229,255,0.18);
-      border-radius: 22px;
+      background: #101022;
+      border: 4px solid #00e5ff;
+      border-radius: 0;
       padding: 18px;
       box-shadow: var(--shadow);
       animation: float 5s ease-in-out infinite;
     }
 
     .stat:nth-child(2) { animation-delay: 0.6s; }
-    .stat:nth-child(3) { animation-delay: 1.2s; }
 
     .label {
       display: block;
       color: var(--muted);
-      font-size: 0.88rem;
-      margin-bottom: 8px;
+      font-size: 0.65rem;
+      margin-bottom: 10px;
       text-transform: uppercase;
       letter-spacing: 0.12em;
     }
 
     .value {
-      font-size: 1.9rem;
-      font-weight: 800;
+      font-size: 1rem;
+      font-weight: 700;
     }
 
     .progress-wrap {
       margin-top: 18px;
-      background: rgba(255,255,255,0.05);
-      border-radius: 999px;
+      background: #000;
+      border: 4px solid #fff;
+      border-radius: 0;
       overflow: hidden;
-      border: 1px solid rgba(255,255,255,0.08);
-      height: 18px;
+      height: 28px;
+      padding: 4px;
     }
 
     .progress-bar {
       width: 0%;
       height: 100%;
-      background: linear-gradient(90deg, var(--accent), var(--neon), var(--neon-2));
-      box-shadow: 0 0 18px rgba(0,229,255,0.5);
-      transition: width 0.5s ease;
+      background:
+        repeating-linear-gradient(
+          90deg,
+          #00e5ff 0px,
+          #00e5ff 12px,
+          #ff4fd8 12px,
+          #ff4fd8 24px
+        );
+      transition: width 0.3s steps(10);
     }
 
     .grid {
@@ -242,36 +284,36 @@
 
     .section-title {
       margin: 34px 0 14px;
-      font-size: 1.3rem;
+      font-size: 0.9rem;
       letter-spacing: 0.06em;
       text-transform: uppercase;
-      color: #e7ebff;
+      color: #fff;
+      text-shadow: 2px 2px 0 #000;
     }
 
     .card {
       grid-column: span 4;
       position: relative;
-      border: 1px solid rgba(124, 92, 255, 0.22);
-      border-radius: 24px;
+      border: 4px solid #ff4fd8;
+      border-radius: 0;
       padding: 22px;
-      background: linear-gradient(180deg, rgba(30, 40, 78, 0.96), rgba(12, 16, 32, 0.94));
+      background: #1a1a2e;
       box-shadow: var(--shadow);
       transform-style: preserve-3d;
-      transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+      transition: transform 120ms steps(2), box-shadow 120ms steps(2);
       cursor: pointer;
       overflow: hidden;
       min-height: 230px;
     }
 
     .card:hover {
-      transform: translateY(-4px) scale(1.01);
-      border-color: rgba(0,229,255,0.38);
-      box-shadow: 0 0 0 1px rgba(0,229,255,0.14), 0 18px 42px rgba(0, 0, 0, 0.5);
+      transform: translate(-4px, -4px);
+      box-shadow: 0 0 0 4px #000, 12px 12px 0 #000;
     }
 
     .card.completed {
-      border-color: rgba(103,245,166,0.55);
-      box-shadow: 0 0 0 1px rgba(103,245,166,0.15), 0 0 30px rgba(103,245,166,0.2);
+      border-color: var(--good);
+      box-shadow: 0 0 0 4px #000, 8px 8px 0 #000, 0 0 20px rgba(103,245,166,0.25);
     }
 
     .card::before {
@@ -279,24 +321,26 @@
       position: absolute;
       top: 16px;
       right: 16px;
-      font-size: 0.78rem;
+      font-size: 0.62rem;
       font-weight: 700;
       color: #fff;
       padding: 6px 10px;
-      border-radius: 999px;
+      border-radius: 0;
       background: rgba(255,79,216,0.18);
-      border: 1px solid rgba(255,79,216,0.3);
+      border: 3px solid rgba(255,79,216,0.7);
     }
 
     .card h3 {
       margin: 0 0 10px;
-      font-size: 1.35rem;
+      font-size: 1rem;
+      line-height: 1.5;
     }
 
     .card p {
       margin: 0 0 16px;
       color: var(--muted);
-      line-height: 1.6;
+      line-height: 1.8;
+      font-size: 0.7rem;
     }
 
     .task-list {
@@ -312,22 +356,23 @@
       align-items: center;
       gap: 10px;
       padding: 10px 12px;
-      border-radius: 14px;
+      border-radius: 0;
       background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.05);
+      border: 2px solid rgba(255,255,255,0.08);
       color: #eef2ff;
-      font-size: 0.95rem;
+      font-size: 0.68rem;
+      line-height: 1.5;
     }
 
     .task-list li::before {
       content: "▶";
       color: var(--neon-2);
-      font-size: 0.75rem;
+      font-size: 0.7rem;
     }
 
     .card.completed .task-list li.done {
       background: rgba(103,245,166,0.12);
-      border-color: rgba(103,245,166,0.2);
+      border-color: rgba(103,245,166,0.35);
       color: #d8ffe8;
     }
 
@@ -335,22 +380,24 @@
       display: inline-flex;
       margin-top: 16px;
       padding: 8px 12px;
-      border-radius: 999px;
+      border-radius: 0;
       background: rgba(124, 92, 255, 0.16);
-      color: #dde3ff;
-      font-size: 0.85rem;
-      border: 1px solid rgba(124, 92, 255, 0.25);
+      color: #fff;
+      font-size: 0.65rem;
+      border: 3px solid rgba(124, 92, 255, 0.6);
     }
 
     .footer-panel {
       margin-top: 24px;
       padding: 22px;
-      border-radius: 22px;
-      background: linear-gradient(180deg, rgba(18,24,48,0.96), rgba(8,10,18,0.96));
-      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 0;
+      background: #101022;
+      border: 4px solid #fff;
       box-shadow: var(--shadow);
       display: grid;
       gap: 10px;
+      font-size: 0.72rem;
+      line-height: 1.8;
     }
 
     .footer-panel strong {
@@ -362,16 +409,17 @@
       bottom: 24px;
       left: 50%;
       transform: translateX(-50%) translateY(24px);
-      background: rgba(11,16,32,0.96);
-      border: 1px solid rgba(0,229,255,0.25);
+      background: #101022;
+      border: 4px solid #00e5ff;
       color: #fff;
       padding: 14px 18px;
-      border-radius: 999px;
+      border-radius: 0;
       box-shadow: var(--shadow);
       opacity: 0;
       pointer-events: none;
       transition: all 0.35s ease;
       z-index: 10;
+      font-size: 0.7rem;
     }
 
     .toast.show {
@@ -382,10 +430,10 @@
     .xp-burst {
       position: absolute;
       pointer-events: none;
-      font-weight: 800;
-      font-size: 1rem;
+      font-weight: 700;
+      font-size: 0.7rem;
       color: var(--warn);
-      text-shadow: 0 0 12px rgba(255, 209, 102, 0.8);
+      text-shadow: 0 0 8px rgba(255, 209, 102, 0.8);
       animation: burst 900ms ease-out forwards;
     }
 
@@ -399,9 +447,9 @@
       position: absolute;
       width: 8px;
       height: 8px;
-      border-radius: 2px;
+      border-radius: 0;
       background: var(--neon-2);
-      box-shadow: 0 0 16px var(--neon-2);
+      box-shadow: 0 0 10px var(--neon-2);
       animation: sparkle 700ms ease-out forwards;
     }
 
@@ -412,16 +460,50 @@
     }
 
     @media (max-width: 980px) {
-      .hero-grid { grid-template-columns: 1fr; }
-      .card { grid-column: span 6; }
+      .hero-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .topbar {
+        justify-content: center;
+      }
+
+      .badge {
+        width: 100%;
+        font-size: 0.7rem;
+        padding: 18px;
+      }
+
+      .badge strong {
+        font-size: 1rem;
+      }
+
+      .card {
+        grid-column: span 6;
+      }
     }
 
     @media (max-width: 640px) {
-      .container { width: min(100% - 20px, 1180px); }
-      .hero { padding: 22px; border-radius: 20px; }
-      h1 { font-size: clamp(2.2rem, 10vw, 3.8rem); }
-      .card { grid-column: span 12; min-height: auto; }
-      .value { font-size: 1.5rem; }
+      .container {
+        width: min(100% - 20px, 1180px);
+      }
+
+      .hero {
+        padding: 22px;
+      }
+
+      h1 {
+        font-size: clamp(1.6rem, 8vw, 3rem);
+      }
+
+      .card {
+        grid-column: span 12;
+        min-height: auto;
+      }
+
+      .value {
+        font-size: 0.85rem;
+      }
     }
   </style>
 </head>
@@ -430,37 +512,29 @@
 
   <main class="container">
     <header class="hero">
-      <div class="topbar">
-        <div class="badge"><span></span> Mission active : vaincre la procrastination</div>
-        <div class="badge">Niveau <strong id="levelText">1</strong> · XP <strong id="xpText">0</strong>/<strong id="xpNextText">100</strong></div>
-      </div>
-
       <div class="hero-grid">
         <div>
-          <h1><span class="typewriter">Juste 5 minutes...</span><br />Puis tu gagnes la partie.</h1>
+          <h1>
+            <span class="typewriter">Juste 5 minutes...</span><br />
+            Puis tu gagnes la partie.
+          </h1>
+
           <p class="hero-copy">
             Clique sur une carte pour marquer une petite victoire. Chaque action te donne de l’XP,
             remplit ta barre de progression et transforme les tâches en missions de jeu.
           </p>
+
+          <div class="topbar">
+            <div class="badge">
+              Niveau <strong id="levelText">1</strong> · XP <strong id="xpText">0</strong>/<strong id="xpNextText">100</strong>
+            </div>
+          </div>
+
           <div class="progress-wrap" aria-label="barre d'expérience">
             <div class="progress-bar" id="progressBar"></div>
           </div>
         </div>
 
-        <div class="stats">
-          <div class="stat">
-            <span class="label">XP total</span>
-            <div class="value" id="xpTotal">0</div>
-          </div>
-          <div class="stat">
-            <span class="label">Quête en cours</span>
-            <div class="value" id="currentQuest">Aucune</div>
-          </div>
-          <div class="stat">
-            <span class="label">Combo</span>
-            <div class="value"><span id="combo">0</span> série</div>
-          </div>
-        </div>
       </div>
     </header>
 
@@ -541,118 +615,109 @@
 
   <div class="toast" id="toast">+0 XP</div>
 
-  <script>
-    const cards = document.querySelectorAll('.card');
-    const xpText = document.getElementById('xpText');
-    const xpNextText = document.getElementById('xpNextText');
-    const xpTotal = document.getElementById('xpTotal');
-    const levelText = document.getElementById('levelText');
-    const progressBar = document.getElementById('progressBar');
-    const currentQuest = document.getElementById('currentQuest');
-    const comboText = document.getElementById('combo');
-    const toast = document.getElementById('toast');
+ <script>
+  const cards = document.querySelectorAll('.card');
+  const xpText = document.getElementById('xpText');
+  const xpNextText = document.getElementById('xpNextText');
+  const levelText = document.getElementById('levelText');
+  const progressBar = document.getElementById('progressBar');
+  const toast = document.getElementById('toast');
 
-    let xp = 0;
-    let level = 1;
-    let combo = 0;
-    const xpPerLevel = 100;
-    const completed = new Set();
+  let xp = 0;
+  let level = 1;
+  const xpPerLevel = 100;
+  const completed = new Set();
 
-    function updateUI() {
-      const xpIntoLevel = xp % xpPerLevel;
-      const progress = (xpIntoLevel / xpPerLevel) * 100;
-      xpText.textContent = xpIntoLevel;
-      xpNextText.textContent = xpPerLevel;
-      xpTotal.textContent = xp;
-      levelText.textContent = level;
-      comboText.textContent = combo;
-      progressBar.style.width = `${progress}%`;
+  function updateUI() {
+    const xpIntoLevel = xp % xpPerLevel;
+    const progress = (xpIntoLevel / xpPerLevel) * 100;
+
+    xpText.textContent = xpIntoLevel;
+    xpNextText.textContent = xpPerLevel;
+    levelText.textContent = level;
+    progressBar.style.width = `${progress}%`;
+  }
+
+  function showToast(message) {
+    toast.textContent = message;
+    toast.classList.add('show');
+    clearTimeout(window.toastTimer);
+    window.toastTimer = setTimeout(() => {
+      toast.classList.remove('show');
+    }, 1400);
+  }
+
+  function burst(card, amount) {
+    const rect = card.getBoundingClientRect();
+
+    const burstEl = document.createElement('div');
+    burstEl.className = 'xp-burst';
+    burstEl.textContent = `+${amount} XP`;
+    burstEl.style.left = `${rect.width * 0.5 + Math.random() * 20 - 10}px`;
+    burstEl.style.top = `${rect.height * 0.5}px`;
+    card.appendChild(burstEl);
+    setTimeout(() => burstEl.remove(), 900);
+
+    for (let i = 0; i < 5; i++) {
+      const sparkle = document.createElement('div');
+      sparkle.className = 'sparkle';
+      sparkle.style.left = `${rect.width * 0.5 + (Math.random() * 120 - 60)}px`;
+      sparkle.style.top = `${rect.height * 0.45 + (Math.random() * 30 - 15)}px`;
+      card.appendChild(sparkle);
+      setTimeout(() => sparkle.remove(), 720);
     }
+  }
 
-    function showToast(message) {
-      toast.textContent = message;
-      toast.classList.add('show');
-      clearTimeout(window.toastTimer);
-      window.toastTimer = setTimeout(() => toast.classList.remove('show'), 1400);
-    }
+  function unlockLevelUp(newLevel) {
+    showToast(`Niveau ${newLevel} débloqué !`);
+    document.body.animate(
+      [
+        { transform: 'scale(1)' },
+        { transform: 'scale(1.006)' },
+        { transform: 'scale(1)' }
+      ],
+      { duration: 420, easing: 'ease-out' }
+    );
+  }
 
-    function burst(card, amount) {
-      const rect = card.getBoundingClientRect();
-      const burstEl = document.createElement('div');
-      burstEl.className = 'xp-burst';
-      burstEl.textContent = `+${amount} XP`;
-      burstEl.style.left = `${rect.width * 0.5 + Math.random() * 20 - 10}px`;
-      burstEl.style.top = `${rect.height * 0.5}px`;
-      card.appendChild(burstEl);
-      setTimeout(() => burstEl.remove(), 900);
+  cards.forEach(card => {
+    card.addEventListener('click', () => {
+      const amount = Number(card.dataset.xp);
+      const quest = card.dataset.name;
 
-      for (let i = 0; i < 5; i++) {
-        const sparkle = document.createElement('div');
-        sparkle.className = 'sparkle';
-        sparkle.style.left = `${rect.width * 0.5 + (Math.random() * 120 - 60)}px`;
-        sparkle.style.top = `${rect.height * 0.45 + (Math.random() * 30 - 15)}px`;
-        card.appendChild(sparkle);
-        setTimeout(() => sparkle.remove(), 720);
+      if (completed.has(quest)) {
+        showToast('Cette carte est déjà complétée.');
+        return;
       }
-    }
 
-    function unlockLevelUp(newLevel) {
-      showToast(`Niveau ${newLevel} débloqué !`);
-      document.body.animate(
-        [
-          { transform: 'scale(1)' },
-          { transform: 'scale(1.006)' },
-          { transform: 'scale(1)' }
-        ],
-        { duration: 420, easing: 'ease-out' }
-      );
-    }
+      completed.add(quest);
+      xp += amount;
+      card.classList.add('completed');
+      burst(card, amount);
+      showToast(`Mission réussie : ${quest}`);
 
-    cards.forEach(card => {
-      card.addEventListener('click', () => {
-        const amount = Number(card.dataset.xp);
-        const quest = card.dataset.name;
-
-        if (!completed.has(quest)) {
-          completed.add(quest);
-          xp += amount;
-          combo += 1;
-          currentQuest.textContent = quest;
-          card.classList.add('completed');
-          card.style.transform = 'translateY(-2px) scale(0.99)';
-          burst(card, amount);
-          showToast(`Mission réussie : ${quest}`);
-
-          const previousLevel = level;
-          level = Math.floor(xp / xpPerLevel) + 1;
-          if (level > previousLevel) {
-            unlockLevelUp(level);
-          }
-
-          updateUI();
-        } else {
-          combo = 0;
-          currentQuest.textContent = 'Mission déjà validée';
-          showToast('Cette carte est déjà complétée.');
-          updateUI();
-        }
-      });
-    });
-
-    document.addEventListener('keydown', (e) => {
-      if (e.key.toLowerCase() === 'r') {
-        xp = 0;
-        level = 1;
-        combo = 0;
-        completed.clear();
-        cards.forEach(card => card.classList.remove('completed'));
-        currentQuest.textContent = 'Aucune';
-        showToast('Progression réinitialisée.');
-        updateUI();
+      const previousLevel = level;
+      level = Math.floor(xp / xpPerLevel) + 1;
+      if (level > previousLevel) {
+        unlockLevelUp(level);
       }
-    });
 
-    updateUI();
-  </script>
+      updateUI();
+    });
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key.toLowerCase() === 'r') {
+      xp = 0;
+      level = 1;
+      completed.clear();
+      cards.forEach(card => card.classList.remove('completed'));
+      showToast('Progression réinitialisée.');
+      updateUI();
+    }
+  });
+
+  updateUI();
+</script>
 </body>
 </html>
