@@ -6,7 +6,6 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
 <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 
 <title>Procrastination Quest</title>
@@ -120,10 +119,6 @@ body::before {
 }
 
 .hero {
-  position: relative;
-
-  overflow: hidden;
-
   padding: 34px;
 
   background: #1a1a2e;
@@ -145,38 +140,6 @@ body::before {
   align-items: end;
 }
 
-.hero-image-frame {
-  width: 100%;
-  max-width: 320px;
-
-  aspect-ratio: 1 / 1;
-
-  border: 4px solid #00e5ff;
-
-  background: #101022;
-
-  box-shadow:
-    0 0 0 4px #000,
-    10px 10px 0 #000;
-
-  overflow: hidden;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  justify-self: end;
-}
-
-.hero-image {
-  width: 100%;
-  height: 100%;
-
-  object-fit: cover;
-
-  image-rendering: pixelated;
-}
-
 h1 {
   margin: 0;
 
@@ -186,15 +149,13 @@ h1 {
 
   text-transform: uppercase;
 
-  color: #fff;
+  color: white;
 
   text-shadow:
     4px 4px 0 #ff0088,
     8px 8px 0 #000;
 
   max-width: 100%;
-
-  overflow-wrap: anywhere;
 }
 
 .typewriter {
@@ -305,11 +266,14 @@ h1 {
 }
 
 .card {
+  position: relative;
+
   grid-column: span 4;
 
   border: 4px solid #ff4fd8;
 
   padding: 22px;
+  padding-bottom: 60px;
 
   background: #1a1a2e;
 
@@ -390,7 +354,7 @@ h1 {
 .task-list input:checked::after {
   content: "✓";
 
-  color: #000;
+  color: black;
 
   font-size: 0.7rem;
 }
@@ -413,6 +377,26 @@ h1 {
   border: 3px solid rgba(124,92,255,0.6);
 
   font-size: 0.65rem;
+}
+
+.xp-corner {
+  position: absolute;
+
+  bottom: 14px;
+  right: 14px;
+
+  padding: 6px 10px;
+
+  font-size: 0.55rem;
+
+  color: #ffd166;
+
+  border: 3px solid rgba(255,209,102,0.45);
+
+  background: rgba(255,209,102,0.08);
+
+  box-shadow:
+    0 0 10px rgba(255,209,102,0.15);
 }
 
 .dice-game {
@@ -499,9 +483,7 @@ h1 {
 
 .dice-number-row {
   display: flex;
-
   align-items: center;
-
   gap: 10px;
 }
 
@@ -523,14 +505,17 @@ h1 {
 
 .cross-toggle:checked {
   background: var(--good);
-
   border-color: var(--good);
 }
 
 .cross-toggle:checked::after {
   content: "✓";
+  color: black;
+}
 
-  color: #000;
+.dice-number {
+  font-size: 1rem;
+  color: #ffd166;
 }
 
 .dice-slot input[type="text"] {
@@ -549,6 +534,10 @@ h1 {
   font-size: 0.55rem;
 }
 
+.dice-slot input[type="text"]::placeholder {
+  color: rgba(255,255,255,0.45);
+}
+
 .footer-panel {
   margin-top: 24px;
 
@@ -565,10 +554,11 @@ h1 {
   line-height: 1.8;
 }
 
-/* TABLET */
+.footer-panel strong {
+  color: #fff;
+}
 
 @media (max-width: 980px) {
-
   .hero-grid {
     grid-template-columns: 1fr;
   }
@@ -576,61 +566,31 @@ h1 {
   .card {
     grid-column: span 6;
   }
-
-  .hero-image-frame {
-    justify-self: center;
-  }
-
 }
 
-/* MOBILE */
-
 @media (max-width: 640px) {
-
   .hero {
     padding: 18px;
   }
 
   .hero-grid {
     grid-template-columns: 1fr;
-
-    gap: 24px;
   }
 
   h1 {
     font-size: clamp(1.45rem, 7vw, 2.4rem);
-
-    max-width: 100%;
   }
-
-  /* IMPORTANT FIX */
 
   .typewriter {
     display: inline;
-
     white-space: normal;
-
     overflow: visible;
-
     animation: none;
-
     border-right: 0;
   }
 
   .card {
     grid-column: span 12;
-  }
-
-  .hero-image-frame {
-    max-width: 220px;
-
-    margin: 0 auto;
-  }
-
-  .badge {
-    padding: 14px;
-
-    font-size: 0.58rem;
   }
 
   .dice-grid {
@@ -641,26 +601,22 @@ h1 {
     width: 100%;
   }
 
+  .dice-slot input[type="text"] {
+    font-size: 0.5rem;
+  }
 }
 
-/* VERY SMALL PHONES */
-
 @media (max-width: 400px) {
-
   .container {
     width: calc(100% - 12px);
-
-    padding: 14px 0 34px;
-  }
-
-  .hero {
-    padding: 14px;
   }
 
   h1 {
-    font-size: clamp(1.15rem, 10vw, 1.8rem);
-
-    line-height: 1.3;
+    font-size: clamp(0.95rem, 8vw, 1.5rem);
+    line-height: 1.25;
+    text-shadow:
+      2px 2px 0 #ff0088,
+      4px 4px 0 #000;
   }
 
   .hero-copy {
@@ -669,12 +625,12 @@ h1 {
 
   .badge {
     padding: 12px;
-
     font-size: 0.48rem;
   }
 
   .card {
     padding: 14px;
+    padding-bottom: 54px;
   }
 
   .card h3 {
@@ -692,7 +648,6 @@ h1 {
   .dice-display {
     width: 76px;
     height: 76px;
-
     font-size: 1.6rem;
   }
 
@@ -700,6 +655,16 @@ h1 {
     font-size: 0.52rem;
   }
 
+  .dice-slot input[type="text"] {
+    font-size: 0.46rem;
+  }
+
+  .xp-corner {
+    font-size: 0.45rem;
+    padding: 5px 8px;
+    bottom: 10px;
+    right: 10px;
+  }
 }
 
 </style>
@@ -718,241 +683,281 @@ h1 {
 <div>
 
 <h1>
-<span class="typewriter">
-Juste 5 minutes.
-</span>
-<br>
+<span class="typewriter">Juste 5 minutes.</span><br>
 Puis tu gagnes la partie.
 </h1>
 
 <!-- <p class="hero-copy">
-Version simplifiée :
-aucune progression,
-aucun système complexe,
-seulement des tâches à cocher
-et un dé à utiliser.
+Version simplifiée : aucune progression, aucun système complexe, seulement des tâches à cocher et un dé à utiliser.
 </p> -->
 
 <!-- <div class="topbar">
 <div class="badge">
-Mode simple ·
-<strong>zéro XP</strong> ·
-<strong>zéro niveau</strong>
+Mode simple · <strong>zéro XP</strong> · <strong>zéro niveau</strong>
 </div>
 </div> -->
 
 </div>
-
-<!-- <div class="hero-image-frame">
-
-<img
-src="https://placehold.co/600x600/png"
-alt="Illustration rétro"
-class="hero-image"
-/>
-
-</div> -->
 
 </div>
 
 </header>
 
-<h2 class="section-title">
-Cartes de mission
-</h2>
+<h2 class="section-title">Cartes de mission</h2>
 
 <section class="grid">
 
-
 <article class="card">
-
 <h3>Étudier pour un examen</h3>
-
-<p>
-Révise un seul chapitre
-ou une seule notion.
-</p>
-
+<p>Révise un seul chapitre ou une seule notion.</p>
 <ul class="task-list">
-
 <li><label><input type="checkbox"><span>Ouvrir les notes</span></label></li>
 <li><label><input type="checkbox"><span>Lire 2 pages</span></label></li>
 <li><label><input type="checkbox"><span>Surligner l’essentiel</span></label></li>
-
 </ul>
-
 <span class="tag">Études</span>
-
+<div class="xp-corner">+45 XP</div>
 </article>
 
 <article class="card">
-
 <h3>Finir un devoir</h3>
-
-<p>
-Avance un travail sans viser
-la perfection immédiate.
-</p>
-
+<p>Avance un travail sans viser la perfection immédiate.</p>
 <ul class="task-list">
-
 <li><label><input type="checkbox"><span>Ouvrir le document</span></label></li>
 <li><label><input type="checkbox"><span>Écrire un paragraphe</span></label></li>
 <li><label><input type="checkbox"><span>Sauvegarder le travail</span></label></li>
-
 </ul>
-
 <span class="tag">Productivité</span>
-
+<div class="xp-corner">+70 XP</div>
 </article>
 
 <article class="card">
-
 <h3>Préparer le sac</h3>
-
-<p>
-Prépare ce qu’il faut
-pour demain matin.
-</p>
-
+<p>Prépare ce qu’il faut pour demain matin.</p>
 <ul class="task-list">
-
 <li><label><input type="checkbox"><span>Mettre les cahiers</span></label></li>
 <li><label><input type="checkbox"><span>Charger l’ordinateur</span></label></li>
 <li><label><input type="checkbox"><span>Préparer une bouteille d’eau</span></label></li>
-
 </ul>
-
 <span class="tag">Routine</span>
-
+<div class="xp-corner">+25 XP</div>
 </article>
 
 <article class="card">
-
 <h3>Lire un texte scolaire</h3>
-
-<p>
-Lis seulement quelques pages
-pour te mettre en route.
-</p>
-
+<p>Lis seulement quelques pages pour te mettre en route.</p>
 <ul class="task-list">
-
 <li><label><input type="checkbox"><span>Ouvrir le PDF</span></label></li>
 <li><label><input type="checkbox"><span>Lire 5 minutes</span></label></li>
 <li><label><input type="checkbox"><span>Noter une idée importante</span></label></li>
-
 </ul>
-
 <span class="tag">Lecture</span>
-
+<div class="xp-corner">+40 XP</div>
 </article>
 
 <article class="card">
-
 <h3>Répondre aux courriels</h3>
-
-<p>
-Vide un peu la boîte
-de réception scolaire.
-</p>
-
+<p>Vide un peu la boîte de réception scolaire.</p>
 <ul class="task-list">
-
 <li><label><input type="checkbox"><span>Ouvrir Outlook</span></label></li>
 <li><label><input type="checkbox"><span>Répondre à 1 message</span></label></li>
 <li><label><input type="checkbox"><span>Archiver les vieux messages</span></label></li>
-
 </ul>
-
 <span class="tag">Organisation</span>
-
+<div class="xp-corner">+35 XP</div>
 </article>
 
 <article class="card">
-
 <h3>Session bibliothèque</h3>
-
-<p>
-Travaille un peu dans
-un endroit calme.
-</p>
-
+<p>Travaille un peu dans un endroit calme.</p>
 <ul class="task-list">
-
 <li><label><input type="checkbox"><span>Trouver une place</span></label></li>
 <li><label><input type="checkbox"><span>Mettre le téléphone de côté</span></label></li>
 <li><label><input type="checkbox"><span>Travailler 10 minutes</span></label></li>
-
 </ul>
-
 <span class="tag">Focus</span>
-
+<div class="xp-corner">+80 XP</div>
 </article>
 
 <article class="card">
-
 <h3>Révision rapide</h3>
-
-<p>
-Révise juste avant
-le prochain cours.
-</p>
-
+<p>Révise juste avant le prochain cours.</p>
 <ul class="task-list">
-
 <li><label><input type="checkbox"><span>Relire les notes</span></label></li>
 <li><label><input type="checkbox"><span>Vérifier les dates importantes</span></label></li>
 <li><label><input type="checkbox"><span>Préparer une question</span></label></li>
-
 </ul>
-
 <span class="tag">Mémoire</span>
-
+<div class="xp-corner">+55 XP</div>
 </article>
 
 <article class="card">
-
 <h3>Planifier la semaine</h3>
-
-<p>
-Organise les tâches
-pour éviter le stress.
-</p>
-
+<p>Organise les tâches pour éviter le stress.</p>
 <ul class="task-list">
-
 <li><label><input type="checkbox"><span>Écrire les échéances</span></label></li>
 <li><label><input type="checkbox"><span>Choisir 3 priorités</span></label></li>
 <li><label><input type="checkbox"><span>Prévoir une pause</span></label></li>
-
 </ul>
-
 <span class="tag">Planning</span>
-
+<div class="xp-corner">+50 XP</div>
 </article>
 
 <article class="card">
-
 <h3>Faire des exercices</h3>
-
-<p>
-Pratique une matière
-avec quelques questions.
-</p>
-
+<p>Pratique une matière avec quelques questions.</p>
 <ul class="task-list">
-
 <li><label><input type="checkbox"><span>Ouvrir les exercices</span></label></li>
 <li><label><input type="checkbox"><span>Faire 3 questions</span></label></li>
 <li><label><input type="checkbox"><span>Corriger les erreurs</span></label></li>
-
 </ul>
-
 <span class="tag">Pratique</span>
-
+<div class="xp-corner">+90 XP</div>
 </article>
 
+<article class="card">
+<h3>Réviser un chapitre</h3>
+<p>Relis un chapitre pendant 15 minutes seulement.</p>
+<ul class="task-list">
+<li><label><input type="checkbox"><span>Ouvrir les notes</span></label></li>
+<li><label><input type="checkbox"><span>Lire une section</span></label></li>
+<li><label><input type="checkbox"><span>Surligner une idée</span></label></li>
+</ul>
+<span class="tag">Études</span>
+<div class="xp-corner">+45 XP</div>
+</article>
+
+<article class="card">
+<h3>Faire un devoir</h3>
+<p>Complète une petite partie d’un travail scolaire.</p>
+<ul class="task-list">
+<li><label><input type="checkbox"><span>Ouvrir le document</span></label></li>
+<li><label><input type="checkbox"><span>Écrire un paragraphe</span></label></li>
+<li><label><input type="checkbox"><span>Relire rapidement</span></label></li>
+</ul>
+<span class="tag">Productivité</span>
+<div class="xp-corner">+60 XP</div>
+</article>
+
+<article class="card">
+<h3>Préparer le sac</h3>
+<p>Prépare tout pour demain.</p>
+<ul class="task-list">
+<li><label><input type="checkbox"><span>Prendre les cahiers</span></label></li>
+<li><label><input type="checkbox"><span>Charger l’ordinateur</span></label></li>
+<li><label><input type="checkbox"><span>Vérifier l’horaire</span></label></li>
+</ul>
+<span class="tag">Routine</span>
+<div class="xp-corner">+20 XP</div>
+</article>
+
+<article class="card">
+<h3>Session bibliothèque</h3>
+<p>Travaille dans un endroit calme.</p>
+<ul class="task-list">
+<li><label><input type="checkbox"><span>Trouver une place</span></label></li>
+<li><label><input type="checkbox"><span>Sortir le matériel</span></label></li>
+<li><label><input type="checkbox"><span>Étudier 20 minutes</span></label></li>
+</ul>
+<span class="tag">Focus</span>
+<div class="xp-corner">+80 XP</div>
+</article>
+
+<article class="card">
+<h3>Lecture obligatoire</h3>
+<p>Avance dans une lecture de cours.</p>
+<ul class="task-list">
+<li><label><input type="checkbox"><span>Lire 3 pages</span></label></li>
+<li><label><input type="checkbox"><span>Noter une idée</span></label></li>
+<li><label><input type="checkbox"><span>Continuer demain</span></label></li>
+</ul>
+<span class="tag">Lecture</span>
+<div class="xp-corner">+35 XP</div>
+</article>
+
+<article class="card">
+<h3>Répondre aux courriels</h3>
+<p>Vide un peu la boîte de réception.</p>
+<ul class="task-list">
+<li><label><input type="checkbox"><span>Lire les messages</span></label></li>
+<li><label><input type="checkbox"><span>Répondre à un prof</span></label></li>
+<li><label><input type="checkbox"><span>Archiver le reste</span></label></li>
+</ul>
+<span class="tag">Organisation</span>
+<div class="xp-corner">+25 XP</div>
+</article>
+
+<article class="card">
+<h3>Mini étude</h3>
+<p>Révise une notion difficile quelques minutes.</p>
+<ul class="task-list">
+<li><label><input type="checkbox"><span>Choisir une notion</span></label></li>
+<li><label><input type="checkbox"><span>Lire un exemple</span></label></li>
+<li><label><input type="checkbox"><span>Faire un exercice</span></label></li>
+</ul>
+<span class="tag">Mémoire</span>
+<div class="xp-corner">+55 XP</div>
+</article>
+
+<article class="card">
+<h3>Pause intelligente</h3>
+<p>Prends une vraie pause sans doomscrolling.</p>
+<ul class="task-list">
+<li><label><input type="checkbox"><span>Boire de l’eau</span></label></li>
+<li><label><input type="checkbox"><span>Marcher 5 minutes</span></label></li>
+<li><label><input type="checkbox"><span>Respirer un peu</span></label></li>
+</ul>
+<span class="tag">Santé</span>
+<div class="xp-corner">+15 XP</div>
+</article>
+
+<article class="card">
+<h3>Finir une présentation</h3>
+<p>Travaille sur un projet oral.</p>
+<ul class="task-list">
+<li><label><input type="checkbox"><span>Choisir un slide</span></label></li>
+<li><label><input type="checkbox"><span>Ajouter une image</span></label></li>
+<li><label><input type="checkbox"><span>Corriger un texte</span></label></li>
+</ul>
+<span class="tag">Projet</span>
+<div class="xp-corner">+95 XP</div>
+</article>
+
+<article class="card">
+<h3>Routine du matin</h3>
+<p>Pars du bon pied avant les cours.</p>
+<ul class="task-list">
+<li><label><input type="checkbox"><span>Faire le lit</span></label></li>
+<li><label><input type="checkbox"><span>Manger quelque chose</span></label></li>
+<li><label><input type="checkbox"><span>Préparer la journée</span></label></li>
+</ul>
+<span class="tag">Routine</span>
+<div class="xp-corner">+30 XP</div>
+</article>
+
+<article class="card">
+<h3>Réviser avant examen</h3>
+<p>Prépare un examen sans viser la perfection.</p>
+<ul class="task-list">
+<li><label><input type="checkbox"><span>Relire les concepts</span></label></li>
+<li><label><input type="checkbox"><span>Faire une fiche</span></label></li>
+<li><label><input type="checkbox"><span>Tester sa mémoire</span></label></li>
+</ul>
+<span class="tag">Examen</span>
+<div class="xp-corner">+100 XP</div>
+</article>
+
+<article class="card">
+<h3>Nettoyer les fichiers</h3>
+<p>Organise ton espace numérique.</p>
+<ul class="task-list">
+<li><label><input type="checkbox"><span>Supprimer des doublons</span></label></li>
+<li><label><input type="checkbox"><span>Classer les cours</span></label></li>
+<li><label><input type="checkbox"><span>Créer un dossier</span></label></li>
+</ul>
+<span class="tag">Organisation</span>
+<div class="xp-corner">+40 XP</div>
+</article>
 
 </section>
 
@@ -964,174 +969,60 @@ Procrastination Dice Game
 
 <div class="dice-panel">
 
-<div class="dice-display" id="diceDisplay">
-?
-</div>
+<div class="dice-display" id="diceDisplay">?</div>
 
-<button
-class="roll-button"
-id="rollButton"
-type="button"
->
+<button class="roll-button" id="rollButton" type="button">
 LANCER LE DÉ
 </button>
 
 <div class="dice-grid">
 
 <div class="dice-slot">
-
 <div class="dice-number-row">
-
-<input
-class="cross-toggle"
-type="checkbox"
-id="cross1"
-/>
-
-<label
-class="dice-number"
-for="cross1"
->
-1
-</label>
-
+<input class="cross-toggle" type="checkbox" id="cross1" />
+<label class="dice-number" for="cross1">1</label>
 </div>
-
-<input
-type="text"
-placeholder="Écris une tâche..."
->
-
+<input type="text" placeholder="Mission 1" />
 </div>
 
 <div class="dice-slot">
-
 <div class="dice-number-row">
-
-<input
-class="cross-toggle"
-type="checkbox"
-id="cross2"
-/>
-
-<label
-class="dice-number"
-for="cross2"
->
-2
-</label>
-
+<input class="cross-toggle" type="checkbox" id="cross2" />
+<label class="dice-number" for="cross2">2</label>
 </div>
-
-<input
-type="text"
-placeholder="Écris une tâche..."
->
-
+<input type="text" placeholder="Mission 2" />
 </div>
 
 <div class="dice-slot">
-
 <div class="dice-number-row">
-
-<input
-class="cross-toggle"
-type="checkbox"
-id="cross3"
-/>
-
-<label
-class="dice-number"
-for="cross3"
->
-3
-</label>
-
+<input class="cross-toggle" type="checkbox" id="cross3" />
+<label class="dice-number" for="cross3">3</label>
 </div>
-
-<input
-type="text"
-placeholder="Écris une tâche..."
->
-
+<input type="text" placeholder="Mission 3" />
 </div>
 
 <div class="dice-slot">
-
 <div class="dice-number-row">
-
-<input
-class="cross-toggle"
-type="checkbox"
-id="cross4"
-/>
-
-<label
-class="dice-number"
-for="cross4"
->
-4
-</label>
-
+<input class="cross-toggle" type="checkbox" id="cross4" />
+<label class="dice-number" for="cross4">4</label>
 </div>
-
-<input
-type="text"
-placeholder="Écris une tâche..."
->
-
+<input type="text" placeholder="Mission 4" />
 </div>
 
 <div class="dice-slot">
-
 <div class="dice-number-row">
-
-<input
-class="cross-toggle"
-type="checkbox"
-id="cross5"
-/>
-
-<label
-class="dice-number"
-for="cross5"
->
-5
-</label>
-
+<input class="cross-toggle" type="checkbox" id="cross5" />
+<label class="dice-number" for="cross5">5</label>
 </div>
-
-<input
-type="text"
-placeholder="Écris une tâche..."
->
-
+<input type="text" placeholder="Mission 5" />
 </div>
 
 <div class="dice-slot">
-
 <div class="dice-number-row">
-
-<input
-class="cross-toggle"
-type="checkbox"
-id="cross6"
-/>
-
-<label
-class="dice-number"
-for="cross6"
->
-6
-</label>
-
+<input class="cross-toggle" type="checkbox" id="cross6" />
+<label class="dice-number" for="cross6">6</label>
 </div>
-
-<input
-type="text"
-placeholder="Écris une tâche..."
->
-
+<input type="text" placeholder="Mission 6" />
 </div>
 
 </div>
@@ -1141,40 +1032,20 @@ placeholder="Écris une tâche..."
 </section>
 
 <section class="footer-panel">
-
-<strong>
-Règle du jeu :
-</strong>
-
-<div>
-Plus la tâche est petite,
-plus elle est facile à finir.
-</div>
-
+<strong>Règle du jeu :</strong>
+<div>Plus la tâche est petite, plus elle est facile à finir.</div>
 </section>
 
 </main>
 
 <script>
+const rollButton = document.getElementById('rollButton');
+const diceDisplay = document.getElementById('diceDisplay');
 
-const rollButton =
-  document.getElementById('rollButton');
-
-const diceDisplay =
-  document.getElementById('diceDisplay');
-
-rollButton.addEventListener(
-  'click',
-  () => {
-
-    const result =
-      Math.floor(Math.random() * 6) + 1;
-
-    diceDisplay.textContent = result;
-
-  }
-);
-
+rollButton.addEventListener('click', () => {
+  const result = Math.floor(Math.random() * 6) + 1;
+  diceDisplay.textContent = result;
+});
 </script>
 
 </body>
